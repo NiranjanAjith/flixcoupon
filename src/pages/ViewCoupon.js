@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { verifyCouponCode } from '../components/verify';
+import { verifyCouponCode } from '../utils/verify';
 
-const MainPage = () => {
+const ViewCoupon = () => {
     const [documentData, setDocumentData] = useState(null);
     const [isError, setIsError] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -10,11 +10,8 @@ const MainPage = () => {
         const fetchData = async () => {
             try {
                 const data = await verifyCouponCode();
-                if (data) {
-                    setDocumentData(data);
-                } else {
-                    setIsError(true);
-                }
+                (!!data) ? setDocumentData(data) : setIsError(true);
+                
             } catch (error) {
                 console.error("Error verifying coupon code:", error);
                 setIsError(true);
@@ -48,4 +45,4 @@ const MainPage = () => {
     );
 };
 
-export default MainPage;
+export default ViewCoupon;

@@ -7,8 +7,8 @@ const extractInfoFromUrl = () => {
     const url = window.location.href;
     const path = url.split('/').pop(); // Get the last part of the URL
 
-    console.log('Full URL:', url);
-    console.log('Extracted path:', path);
+    // console.log('Full URL:', url);
+    // console.log('Extracted path:', path);
 
     if (path.length !== 84) {
         console.error('Invalid URL format. Expected 84 characters, got:', path.length);
@@ -30,7 +30,7 @@ const verifyCouponCode = async () => {
 
         console.log('Attempting to fetch document with id:', docRefId);
 
-        const docRef = doc(firestore, 'tickets', docRefId);
+        const docRef = doc(firestore, 'coupons', docRefId);
         const docSnap = await getDoc(docRef);
         // const docRef = firestore.collection('tickets').doc(docRefId);
         // const doc = await docRef.get();
@@ -62,9 +62,12 @@ const verifyCouponCode = async () => {
             return null;
         }
     } catch (error) {
+        // TODO: Show custom error page instead (use HTML template)
         console.error("Error in verifyCouponCode:", error);
         return null;
     }
 };
+
+
 
 export { extractInfoFromUrl, verifyCouponCode };
