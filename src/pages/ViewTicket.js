@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { verifyCouponCode } from '../utils/verifyCoupon';
+import { verifyAndGetTicket } from '../utils/verifyTicket';
 
-const ViewCoupon = () => {
+const ViewTicket = () => {
     const [documentData, setDocumentData] = useState(null);
     const [isError, setIsError] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -9,9 +9,9 @@ const ViewCoupon = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const data = await verifyCouponCode();
+                const data = await verifyAndGetTicket();
                 (!!data) ? setDocumentData(data) : setIsError(true);
-
+                
             } catch (error) {
                 console.error("Error verifying coupon code:", error);
                 setIsError(true);
@@ -35,7 +35,7 @@ const ViewCoupon = () => {
         <div>
             {documentData && (
                 <div>
-                    <h1>{documentData.title}</h1>
+                    <h1>{documentData.ticket_code}</h1>
                     <p>{documentData.description}</p>
                     <img src={documentData.qrCodeUrl} alt="QR Code" />
                     {/* Add more fields as needed */}
@@ -45,4 +45,4 @@ const ViewCoupon = () => {
     );
 };
 
-export default ViewCoupon;
+export default ViewTicket;
