@@ -30,7 +30,7 @@ const verifyCouponCode = async () => {
 
         console.log('Attempting to fetch document with id:', docRefId);
 
-        const docRef = doc(firestore, 'coupons', docRefId);
+        const docRef = doc(firestore, 'coupon', docRefId);
         const docSnap = await getDoc(docRef);
         // const docRef = firestore.collection('tickets').doc(docRefId);
         // const doc = await docRef.get();

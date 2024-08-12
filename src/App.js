@@ -10,11 +10,17 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          {/** TODO: For testing, use "(add test value here)" */}
-          <Route path="/coupons/view/:couponAndDocId" element={<ViewCoupon />} />
+          {/**For testing, use "50832f0735a30d30f875bbcefd3d17177fc1c571cea098d2b9da605fc8a4641f0bPkK2A48vfTEJc4FV7T" */}
+          <Route
+            path="/coupons/view/:couponAndDocId"
+            element={<ViewCoupon />}
+          />
 
           {/** For testing, use "TZ57NU6" */}
-          <Route path="/tickets/view/:ticketAndDocId" element={<ViewTicket />} />
+          <Route
+            path="/tickets/view/:ticketAndDocId"
+            element={<ViewTicket />}
+          />
 
           {/* TODO: Add Page not found HTML template below */}
           <Route path="*" element={<div>404 - Page Not Found</div>} />
